@@ -2,4 +2,4 @@
 By Hengjie Liu, Elizabeth McKenzie, Di Xu, Qifan Xu, Robert K. Chin, Dan Ruan, Ke Sheng
 https://www.sciencedirect.com/science/article/pii/S1361841524002767  
 
-The code will be available soon ...
+The code will be available soon (November 2024)
