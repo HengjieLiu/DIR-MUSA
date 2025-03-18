@@ -5,10 +5,14 @@ This is the official **PyTorch** implementation of the paper:
 <a href="https://www.sciencedirect.com/science/article/pii/S1361841524002767">Liu, H., McKenzie, E., Xu, D., Xu, Q., Chin, R. K., Ruan, D., & Sheng, K. (2025). MUsculo-Skeleton-Aware (MUSA) deep learning for anatomically guided head-and-neck CT deformable registration. Medical Image Analysis, 99, 103351. https://doi.org/10.1016/j.media.2024.103351</a>
 
 ---
+## Notice
+
+I apologize for the delay in uploading the remaining code. I am currently working on my PhD thesis and preparing for my defense. I will upload everything by the end of August. During this period, I appreciate your understanding and patience.
+
 ## Progress
 - [x] Upload musa code [Dec 2024]
-- [ ] Upload training code [Mar 2025]
-- [ ] Finalize README.md [Mar 2025]
+- [ ] Upload training code [Pending – End of August]
+- [ ] Finalize README.md [Pending – End of August]
 
 ---
 ## Introduction
