@@ -69,4 +69,5 @@ The implementation of MUSA is based on the following open-source code:
 - [Dual-PR-Net](https://github.com/kangmiao15/Dual-Stream-PRNet-Plus)
 - [LapIRN](https://github.com/cwmok/LapIRN)
 - [abcd-registration-experiments](https://github.com/brain-microstructure-exploration-tools/abcd-registration-experiments)
+- [spine-ct-mr-registration](https://github.com/BailiangJ/spine-ct-mr-registration)
 
