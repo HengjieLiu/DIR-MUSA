@@ -7,12 +7,12 @@ This is the official **PyTorch** implementation of the paper:
 ---
 ## Notice
 
-I apologize for the delay in uploading the remaining code. I am currently working on my PhD thesis and preparing for my defense. I will upload everything by the end of August. During this period, I appreciate your understanding and patience.
+I apologize for the delay in uploading the remaining code. I am currently working on my PhD thesis and preparing for my defense. I will upload everything by the end of October (sorry for the delay again due to the learn2reg challenge, no more delays this time). During this period, I appreciate your understanding and patience.
 
 ## Progress
 - [x] Upload musa code [Dec 2024]
-- [ ] Upload training code [Pending – End of August]
-- [ ] Finalize README.md [Pending – End of August]
+- [ ] Upload training code [Pending – End of October]
+- [ ] Finalize README.md [Pending – End of October]
 
 ---
 ## Introduction
