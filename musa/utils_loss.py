@@ -199,6 +199,7 @@ class Grad3d(torch.nn.Module):
 class BE3d(torch.nn.Module):
     """
     3-D bending energy regularization.
+        E = ∫ (∂²u/∂x²)² + (∂²u/∂y²)² + (∂²u/∂z²)² + 2[(∂²u/∂x∂y)² + (∂²u/∂y∂z)² + (∂²u/∂x∂z)²] dV
     Notes:
         Forward difference is used for approximating spatial gradient
         Note the unit is voxel not mm, so normalization is needed for difference scale/resolution
@@ -250,6 +251,7 @@ class BE3d(torch.nn.Module):
 class BE3d_masked(torch.nn.Module):
     """
     3-D bending energy regularization with mask.
+        E = ∫ (∂²u/∂x²)² + (∂²u/∂y²)² + (∂²u/∂z²)² + 2[(∂²u/∂x∂y)² + (∂²u/∂y∂z)² + (∂²u/∂x∂z)²] dV
     Used specifically for musa loss, where the bony mask is provided as mask.
 
     Notes:
