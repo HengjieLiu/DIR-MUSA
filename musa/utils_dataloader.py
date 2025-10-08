@@ -8,6 +8,7 @@ Function/Class list:
     save_nifti
     load_vol
     myDataset_trn
+    myDataset_val
 
 """
 
@@ -138,9 +139,9 @@ class myDataset_trn(Dataset):
     """
     A unified Dataset class to load volumes and corresponding segmentations (optional).
     Supports multiple loss types: 
-    - loss 1 (L_sim+L_reg):        volumes only
-    - loss 2 (L_sim+L_reg+L_dice): volumes + segmentation for dice loss (multi-class)
-    - loss 3 (L_sim+L_reg+L_musa): volumes + segmentation for musaloss (binary)
+        - loss 1 (L_sim+L_reg):        volumes only
+        - loss 2 (L_sim+L_reg+L_dice): volumes + segmentation for dice loss (multi-class)
+        - loss 3 (L_sim+L_reg+L_musa): volumes + segmentation for musaloss (binary)
 
     The data/loss type is determined by the provided path arguments.
     """
@@ -196,4 +197,62 @@ class myDataset_trn(Dataset):
             fixed_seg_musaloss  = torch.from_numpy((fixed_seg_musaloss > 0).astype(np.float32))
 
             return moving, fixed, moving_seg_musaloss, fixed_seg_musaloss
+
+
+class myDataset_val(Dataset):
+    """
+    A unified Dataset class to load volumes and corresponding segmentations for validation.
+    Despite the loss, the validation always loads images with both segmentations (seg_o and seg_b)
+    
+    The validation pairs are created by splitting the val_list in half and pairing
+    corresponding elements from each half.
+    """
+    def __init__(self, val_list, path_vol, path_seg_o, path_seg_b, ftype='.npy', DEBUG=False):
+        
+        self.val_list = val_list
+        self.path_vol = path_vol
+        self.path_seg_o = path_seg_o
+        self.path_seg_b = path_seg_b
+        self.ftype = ftype
+        self.DEBUG = DEBUG
+        
+        # Create index pairs by splitting val_list in half
+        n = len(self.val_list) // 2  # Half the length of the list
+        self.index_pair = [(self.val_list[i], self.val_list[i + n]) for i in range(n)]
+        
+        if self.DEBUG:
+            print(f'Creating {len(self.index_pair)} pairs from {len(self.val_list)} samples')
+            print('len(self.index_pair) [expecting 25]: ', len(self.index_pair))
+
+    def __len__(self):
+        return len(self.index_pair)
+    
+    def load_pairs(self, idx, path):
+        """ Helper function to load the moving and fixed volumes/segmentations. """
+        moving = load_vol(self.index_pair[idx][0] + self.ftype, path, DEBUG=self.DEBUG)
+        fixed  = load_vol(self.index_pair[idx][1] + self.ftype, path, DEBUG=self.DEBUG)
+        return moving, fixed
+
+    def __getitem__(self, idx):
+        # Load volumes
+        moving, fixed = self.load_pairs(idx, self.path_vol)
+        
+        # Load original segmentations
+        moving_seg_o, fixed_seg_o = self.load_pairs(idx, self.path_seg_o)
+        
+        # Load binary segmentations
+        moving_seg_b, fixed_seg_b = self.load_pairs(idx, self.path_seg_b)
+
+        if self.DEBUG:
+            print('\nDEBUG in myDataset_val loading pair: ', self.index_pair[idx][0], self.index_pair[idx][1])
+        
+        # Convert to tensors
+        moving = torch.from_numpy(moving).float()
+        fixed  = torch.from_numpy(fixed).float()
+        moving_seg_o = torch.from_numpy(moving_seg_o).long()
+        fixed_seg_o  = torch.from_numpy(fixed_seg_o).long()
+        moving_seg_b = torch.from_numpy(moving_seg_b).long()
+        fixed_seg_b  = torch.from_numpy(fixed_seg_b).long()
+        
+        return moving, fixed, moving_seg_o, fixed_seg_o, moving_seg_b, fixed_seg_b
 
