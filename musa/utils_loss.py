@@ -39,7 +39,7 @@ import torch.nn.functional as nnf
 ######################################################################################################################
 ###### Loss for similarity (unsupervised)
 ######################################################################################################################
-class MSE(nn.Module):
+class MSE(torch.nn.Module):
     """
     Mean squared error loss.
     Notes:
@@ -75,7 +75,7 @@ class NCC(torch.nn.Module):
         super(NCC, self).__init__()
         self.win = win
 
-    def forward(self, y_pred, y_true):
+    def loss(self, y_pred, y_true):
 
         I = y_true
         J = y_pred
@@ -126,7 +126,8 @@ class NCC(torch.nn.Module):
 
         cc = cross * cross / (I_var * J_var + 1e-5)
 
-        return -torch.mean(cc)
+        # return -torch.mean(cc)
+        return 1-torch.mean(cc) # add 1 to make it [0,1]
 
 
 ######################################################################################################################
