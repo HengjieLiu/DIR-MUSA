@@ -4,24 +4,25 @@ This is the official **PyTorch** implementation of the paper:
 
 <a href="https://www.sciencedirect.com/science/article/pii/S1361841524002767">Liu, H., McKenzie, E., Xu, D., Xu, Q., Chin, R. K., Ruan, D., & Sheng, K. (2025). MUsculo-Skeleton-Aware (MUSA) deep learning for anatomically guided head-and-neck CT deformable registration. Medical Image Analysis, 99, 103351. https://doi.org/10.1016/j.media.2024.103351</a>
 
----
-## Notice
-
-I apologize for the delay in uploading the remaining code. I am currently working on my PhD thesis and preparing for my defense. I will upload everything by the end of October (sorry for the delay again due to the learn2reg challenge, no more delays this time). During this period, I appreciate your understanding and patience.
-
-## Progress
-- [x] Upload musa code [Dec 2024]
-- [ ] Upload training code [Pending – End of October]
-- [ ] Finalize README.md [Pending – End of October]
-
----
 ## Introduction
 MUSA is a two-stage deformable image registration framework for head-and-neck CT. It decomposes the complex head-and-neck deformation into a bulk posture change and residual fine deformation by leveraging spatially variant regularization on bony structures and soft tissue. We highlight the importance of explicit multiresolution modeling and anatomical constraints for achieving anatomically plausible deformations.
 
----
+## Progress
+- [x] Upload musa code
+- [x] Upload training scripts
+- [x] Update README.md
+
+## Planned Enhancements
+The items below are planned enhancements. They may be delayed or even skipped, depending on available time and if proper data is available.
+- [ ] Upload pretrained model weights and test scripts for inference
+- [ ] Visualization demos
+
 ## Run the code
 ### Environment setup
-[work in progress]
+Please see requirements.txt
+
+### Train your own model
+Follow the training scripts under scripts/
 
 ### Dataset and preprocessing
 We cannot share the processed dataset. However, the raw inter-subject datasets used in this study can be obtained from [The Cancer Imaging Archive (TCIA)](https://www.cancerimagingarchive.net/).
@@ -40,10 +41,9 @@ Segmentation for bony structures and related soft tissue organs at risk (OARs) c
 - Vertebrae segmentation: [challenge](https://github.com/anjany/verse), [example repo](https://github.com/christianpayer/MedicalDataAugmentationTool-VerSe)  
 - Head and Neck (HN) OAR segmentation: [challenge](https://structseg2019.grand-challenge.org/Home/), [example repo](https://github.com/HiLab-git/SepNet)
 
-### Train your own model
-[work in progress]
+## Contact
+Contributions and feedback are welcome! Please open an issue or submit a pull request. For direct inquiries, you can also reach me at <hjliu@g.ucla.edu>.
 
----
 ## Citation
 If you find this repository useful in your research, please consider to cite:
     
@@ -59,8 +59,6 @@ If you find this repository useful in your research, please consider to cite:
         author = {Hengjie Liu and Elizabeth McKenzie and Di Xu and Qifan Xu and Robert K. Chin and Dan Ruan and Ke Sheng},
     }
 
-
----
 ## Code reference
 The implementation of MUSA is based on the following open-source code:
 - [VoxelMorph](https://github.com/voxelmorph/voxelmorph)
@@ -70,4 +68,3 @@ The implementation of MUSA is based on the following open-source code:
 - [LapIRN](https://github.com/cwmok/LapIRN)
 - [abcd-registration-experiments](https://github.com/brain-microstructure-exploration-tools/abcd-registration-experiments)
 - [spine-ct-mr-registration](https://github.com/BailiangJ/spine-ct-mr-registration)
-
