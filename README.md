@@ -7,8 +7,10 @@ This is the official **PyTorch** implementation of the paper:
 ## Introduction
 MUSA is a two-stage deformable image registration framework for head-and-neck CT. It decomposes the complex head-and-neck deformation into a bulk posture change and residual fine deformation by leveraging spatially variant regularization on bony structures and soft tissue. We highlight the importance of explicit multiresolution modeling and anatomical constraints for achieving anatomically plausible deformations.
 
-![Preview](examples/preview.gif)
-Note: In the above animation, we use linear scaling of the deformation field to visualize "the deforming process". It is not a rigorous way to analyze deformation as the entire process is not linear. But it can highlight some aspects of plausibility/implausibility in this case.
+![Preview](examples/preview_v2_with_jdet.gif)
+In the animation above, we linearly scale the deformation field to visualize the "deforming process". This is **NOT** a rigorous way to analyze deformation, because the true transformation is **NOT** guaranteed to be linear.
+Nevertheless, it can highlight some aspects of plausibility/implausibility of the entire process.  
+For the 1-stage method, we divide the total deformation into 10 evenly spaced steps. For the 2-stage method, we apply the stage 1 and stage 2 deformations sequentially, using 5 steps for each stage (10 steps total). The difference is visible in how the head pitches upward and in the Jacobian determinant maps.
 
 ## Progress
 - [x] Upload musa code
