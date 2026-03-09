@@ -22,7 +22,7 @@ For the 1-stage method, we divide the total deformation into 10 evenly spaced st
 ## Planned Enhancements
 The items below are planned enhancements. They may be delayed or even skipped, depending on available time and if proper data is available.
 - [ ] Visualization demos
-- [ ] Test the idea with optimization-based methods (e.g., [FireANTs](https://github.com/rohitrango/FireANTs/tree/main/fireants)).
+- [ ] Test the idea with optimization-based methods (e.g., [FireANTs](https://github.com/rohitrango/FireANTs)).
 
 ## Run the code
 ### Environment setup
