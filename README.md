@@ -17,7 +17,7 @@ For the 1-stage method, we divide the total deformation into 10 evenly spaced st
 - [x] Upload training scripts
 - [x] Update README.md
 - [x] Upload pretrained model weights
-- [ ] Upload inference scripts
+- [x] Upload inference scripts
 
 ## Planned Enhancements
 The items below are planned enhancements. They may be delayed or even skipped, depending on available time and if proper data is available.
